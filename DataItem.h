@@ -2,6 +2,7 @@
 
 class DataItem
 {
+private:
 	char name, date, quantityType;
 	double quantity;
 

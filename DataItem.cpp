@@ -1,5 +1,5 @@
 #include "DataItem.h"
-
+#include <iostream>
 
 DataItem::DataItem()
 {
@@ -13,47 +13,46 @@ DataItem::DataItem(char newName, char newDate, char newQuantityType, double newQ
 	quantity = newQuantity;
 }
 
-
 DataItem::~DataItem()
 {
 }
 
-char getName()
+char DataItem::getName()
 {
-
+	return name;
 }
 
-void setName(char newName)
+void DataItem::setName(char newName)
 {
-
+	name = newName;
 }
 
-char getDate()
+char DataItem::getDate()
 {
-
+	return date;
 }
 
-void setDate(char newDate)
+void DataItem::setDate(char newDate)
 {
-
+	date = newDate;
 }
 
-char getQuantityType()
+char DataItem::getQuantityType()
 {
-
+	return quantityType;
 }
 
-void setQuantityType(char newQuantityType)
+void DataItem::setQuantityType(char newQuantityType)
 {
-
+	quantityType = newQuantityType;
 }
 
-double getQuantity()
+double DataItem::getQuantity()
 {
-
+	return quantity;
 }
 
-void setQuantity(double newQuantity)
+void DataItem::setQuantity(double newQuantity)
 {
-
+	quantity = newQuantity;
 }
