@@ -61,7 +61,7 @@ void DataItem::setQuantity(double newQuantity)
 std::string DataItem::toString()
 {
 	std::stringstream outputString;
-	outputString << "Name: " << name << " Date: " << date << " Quantity: " << quantity << " " << quantityType;
+	outputString << "Name: " << name << " | Date: " << date << " | Quantity: " << quantity << " " << quantityType;
 
 	std::string returnString = outputString.str();
 
