@@ -1,5 +1,6 @@
 #include "DataItem.h"
 #include <iostream>
+#include <sstream>
 
 DataItem::DataItem()
 {
@@ -55,4 +56,14 @@ double DataItem::getQuantity()
 void DataItem::setQuantity(double newQuantity)
 {
 	quantity = newQuantity;
+}
+
+std::string DataItem::toString()
+{
+	std::stringstream outputString;
+	outputString << "Name: " << name << " Date: " << date << " Quantity: " << quantity << " " << quantityType;
+
+	std::string returnString = outputString.str();
+
+	return returnString;
 }

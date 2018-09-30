@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <ostream>
 
 class DataItem
 {
@@ -23,6 +24,6 @@ public:
 	void setQuantityType(std::string newQuantityType);
 	double getQuantity();
 	void setQuantity(double newQuantity);
-
+	std::string toString();
 };
 
