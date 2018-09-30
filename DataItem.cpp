@@ -1,6 +1,5 @@
 #include "DataItem.h"
 #include <iostream>
-#include <string>
 
 DataItem::DataItem()
 {
