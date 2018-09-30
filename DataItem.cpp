@@ -1,11 +1,12 @@
 #include "DataItem.h"
 #include <iostream>
+#include <string>
 
 DataItem::DataItem()
 {
 }
 
-DataItem::DataItem(char newName, char newDate, char newQuantityType, double newQuantity)
+DataItem::DataItem(std::string newName, std::string newDate, std::string newQuantityType, double newQuantity)
 {
 	name = newName;
 	date = newDate;
@@ -17,32 +18,32 @@ DataItem::~DataItem()
 {
 }
 
-char DataItem::getName()
+std::string DataItem::getName()
 {
 	return name;
 }
 
-void DataItem::setName(char newName)
+void DataItem::setName(std::string newName)
 {
 	name = newName;
 }
 
-char DataItem::getDate()
+std::string DataItem::getDate()
 {
 	return date;
 }
 
-void DataItem::setDate(char newDate)
+void DataItem::setDate(std::string newDate)
 {
 	date = newDate;
 }
 
-char DataItem::getQuantityType()
+std::string DataItem::getQuantityType()
 {
 	return quantityType;
 }
 
-void DataItem::setQuantityType(char newQuantityType)
+void DataItem::setQuantityType(std::string newQuantityType)
 {
 	quantityType = newQuantityType;
 }

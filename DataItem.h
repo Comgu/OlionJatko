@@ -1,23 +1,26 @@
 #pragma once
+#include <string>
 
 class DataItem
 {
 private:
-	char name, date, quantityType;
+	std::string name;
+	std::string date;
+	std::string quantityType;
 	double quantity;
 
 public:
 	DataItem();																	// Constructor & Overload
-	DataItem(char newName, char newDate, char newQuantityType, double newQuantity);
+	DataItem(std::string newName, std::string newDate, std::string newQuantityType, double newQuantity);
 
 	~DataItem();	 // Destructor
 
-	char getName();																// Get & Set
-	void setName(char newName);
-	char getDate();
-	void setDate(char newDate);
-	char getQuantityType();
-	void setQuantityType(char newQuantityType);
+	std::string getName();																// Get & Set
+	void setName(std::string newName);
+	std::string getDate();
+	void setDate(std::string newDate);
+	std::string getQuantityType();
+	void setQuantityType(std::string newQuantityType);
 	double getQuantity();
 	void setQuantity(double newQuantity);
 
