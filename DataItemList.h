@@ -12,9 +12,9 @@ public:
 	DataItemList(std::vector<DataItem> newObjects);
 	~DataItemList();
 
-	DataItem getObject(DataItemList objectList, int i);
+	DataItem getObject(int i);
 	void addObject(DataItem newObject);
-	void printAllObjects(DataItemList objectList);
+	void printAllObjects();
 
 };
 
