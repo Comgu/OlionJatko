@@ -16,6 +16,6 @@ public:
 	void addObject(DataItem* newObject);
 	void printAllObjects();
 	static DataItemList* getInstance();
-
+	int findObjectPos(DataItem* object);
+	bool findIfObjectExists(DataItem* object);
 };
-
