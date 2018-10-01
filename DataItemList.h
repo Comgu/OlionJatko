@@ -6,15 +6,15 @@ class DataItemList
 {
 private:
 	std::vector<DataItem*> objects{};
+	static DataItemList* instance;
+	DataItemList();
 
 public:
-	DataItemList();
-	//DataItemList(std::vector<DataItem> newObjects);
 	~DataItemList();
-
 	DataItem* getObject(int i);
 	void addObject(DataItem* newObject);
 	void printAllObjects();
+	static DataItemList* getInstance();
 
 };
 

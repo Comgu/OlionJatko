@@ -1,14 +1,11 @@
 #include "DataItemList.h"
 #include <iostream>
 
+DataItemList* DataItemList::instance = NULL;
+
 DataItemList::DataItemList()
 {
 }
-
-/*DataItemList::DataItemList(std::vector<DataItem> newObjects)
-{
-	objects = newObjects;
-}*/
 
 DataItemList::~DataItemList()
 {
@@ -30,4 +27,11 @@ void DataItemList::printAllObjects()
 	{
 		std::cout << i+1 << " " << objects[i]->toString() << "\n";
 	}
+}
+
+DataItemList* DataItemList::getInstance()
+{
+	if (instance == NULL)
+		instance = new DataItemList();
+	return instance;
 }
