@@ -6,10 +6,9 @@ DataItem::DataItem()
 {
 }
 
-DataItem::DataItem(std::string newName, std::string newDate, std::string newQuantityType, double newQuantity)
+DataItem::DataItem(std::string newName, double newQuantity, std::string newQuantityType)
 {
 	name = newName;
-	date = newDate;
 	quantityType = newQuantityType;
 	quantity = newQuantity;
 }
@@ -26,16 +25,6 @@ std::string DataItem::getName()
 void DataItem::setName(std::string newName)
 {
 	name = newName;
-}
-
-std::string DataItem::getDate()
-{
-	return date;
-}
-
-void DataItem::setDate(std::string newDate)
-{
-	date = newDate;
 }
 
 std::string DataItem::getQuantityType()
@@ -61,7 +50,7 @@ void DataItem::setQuantity(double newQuantity)
 std::string DataItem::toString()
 {
 	std::stringstream outputString;
-	outputString << "Name: " << name << " | Date: " << date << " | Quantity: " << quantity << " " << quantityType;
+	outputString << "Name: " << name << " | Quantity: " << quantity << " " << quantityType;
 
 	std::string returnString = outputString.str();
 
