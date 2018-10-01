@@ -14,4 +14,3 @@ public:
 	void addObject(DataItem* newObject);
 	void printAllObjects();
 };
-
