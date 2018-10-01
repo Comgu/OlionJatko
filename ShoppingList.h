@@ -1,21 +1,17 @@
 #pragma once
-#include "DataItem.h"
 #include <vector>
+#include "DataItem.h"
 #include "ItemList.h"
 
-class DataItemList : public ItemList
+class ShoppingList : public ItemList
 {
 private:
 	std::vector<DataItem*> objects{};
-	static DataItemList* instance;
-	DataItemList();
-
 public:
-	~DataItemList();
+	ShoppingList();
+	~ShoppingList();
 	DataItem* getObject(int i);
 	void addObject(DataItem* newObject);
 	void printAllObjects();
-	static DataItemList* getInstance();
-
 };
 
