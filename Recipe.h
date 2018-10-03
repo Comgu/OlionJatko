@@ -6,17 +6,15 @@
 class Recipe : public ItemList
 {
 private:
-	std::vector<DataItem*> objects{};
 	std::string name;
 public:
-	Recipe();
+	Recipe(const std::string& newName);
 	~Recipe();
 
 	std::string getName();															// Get & Set
-	void setName(std::string newName);
+	void setName(const std::string& newName);
 	std::vector<DataItem*> getRecipe();
-	DataItem* getObject(int i);
-	void addObject(DataItem* newObject);
-	void printAllObjects();
-
+	DataItem* getObject(int i) override;
+	void addObject(DataItem* newObject) override;
+	void printAllObjects() override;
 };

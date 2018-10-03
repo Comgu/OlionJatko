@@ -3,8 +3,9 @@
 
 
 
-Recipe::Recipe()
+Recipe::Recipe(const std::string& newName)
 {
+	name = newName;
 }
 
 Recipe::~Recipe()
@@ -16,7 +17,7 @@ std::string Recipe::getName()
 	return name;
 }
 
-void Recipe::setName(std::string newName)
+void Recipe::setName(const std::string& newName)
 {
 	name = newName;
 }
@@ -38,8 +39,9 @@ void Recipe::addObject(DataItem* newObject)
 
 void Recipe::printAllObjects()
 {
+	std::cout << "\n" << name << " contents:\n";
 	for (unsigned int i = 0; i < objects.size(); i++)
 	{
-		std::cout << i + 1 << " " << objects[i]->toString() << "\n";
+		std::cout  << objects[i]->toString() << "\n";
 	}
 }
