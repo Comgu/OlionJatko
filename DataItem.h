@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include <ostream>
 
 class DataItem
 {
@@ -9,16 +8,16 @@ private:
 	double quantity;
 	std::string quantityType;
 
-public:
-	DataItem();																	// Constructor & Overload
-	DataItem(std::string newName, double newQuantity, std::string newQuantityType);
-
+public:															// Constructor & Overload
+	DataItem();
+	DataItem(const std::string& newName);
+	DataItem(const std::string& newName, double newQuantity, const std::string& newQuantityType);
 	~DataItem();	 // Destructor
 
 	std::string getName();																// Get & Set
-	void setName(std::string newName);
+	void setName(const std::string& newName);
 	std::string getQuantityType();
-	void setQuantityType(std::string newQuantityType);
+	void setQuantityType(const std::string& newQuantityType);
 	double getQuantity();
 	void setQuantity(double newQuantity);
 	std::string toString();

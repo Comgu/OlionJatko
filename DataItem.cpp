@@ -6,7 +6,12 @@ DataItem::DataItem()
 {
 }
 
-DataItem::DataItem(std::string newName, double newQuantity, std::string newQuantityType)
+DataItem::DataItem(const std::string& newName)
+{
+	name = newName;
+}
+
+DataItem::DataItem(const std::string& newName, double newQuantity, const std::string& newQuantityType)
 {
 	name = newName;
 	quantityType = newQuantityType;
@@ -22,7 +27,7 @@ std::string DataItem::getName()
 	return name;
 }
 
-void DataItem::setName(std::string newName)
+void DataItem::setName(const std::string& newName)
 {
 	name = newName;
 }
@@ -32,7 +37,7 @@ std::string DataItem::getQuantityType()
 	return quantityType;
 }
 
-void DataItem::setQuantityType(std::string newQuantityType)
+void DataItem::setQuantityType(const std::string& newQuantityType)
 {
 	quantityType = newQuantityType;
 }
