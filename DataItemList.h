@@ -1,20 +1,16 @@
 #pragma once
-#include "DataItem.h"
-#include <vector>
 #include "ItemList.h"
 
 class DataItemList : public ItemList
 {
 private:
-	std::vector<DataItem*> objects{};
 	static DataItemList* instance;
 	DataItemList();
-
 public:
 	~DataItemList();
-	DataItem* getObject(int i);
-	void addObject(DataItem* newObject);
-	void printAllObjects();
+	DataItem* getObject(int i) override;
+	void addObject(DataItem* newObject) override;
+	void printAllObjects() override;
 	static DataItemList* getInstance();
 	int findObjectPos(DataItem* object);
 	bool findIfObjectExists(DataItem* object);
