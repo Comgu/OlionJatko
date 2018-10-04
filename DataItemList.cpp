@@ -20,10 +20,17 @@ DataItem* DataItemList::getObject(int i)
 	return objects[i];
 }
 
+std::vector<DataItem*> DataItemList::getContents()
+{
+	return objects;
+}
+
 void DataItemList::addObject(DataItem* newObject)
 {
-	//if (findIfObjectExists(newObject->getName(), newObject->getQuantity(), newObject->getQuantityType()) == false)
+	if (findIfObjectExists(newObject) == false)
 		objects.push_back(newObject);
+	else
+		std::cout << "\nObject " << newObject->getName() << " " << newObject->getQuantity() << " " << newObject->getQuantityType() << " already exists\n";
 }
 
 void DataItemList::printAllObjects()
@@ -45,9 +52,9 @@ int DataItemList::findObjectPos(DataItem* object)
 {
 		for (unsigned int i = 0; i < objects.size(); i++)
 		{
-			if (object->getName() == objects[i]->getName())
+			if (compareStrings(object->getName(), objects[i]->getName()) == true)
 				if (object->getQuantity() == objects[i]->getQuantity())
-					if (object->getQuantityType() == objects[i]->getQuantityType())
+					if (compareStrings(object->getQuantityType(), objects[i]->getQuantityType()) == true)
 						return i;
 		}
 	return 0;
@@ -57,9 +64,9 @@ bool DataItemList::findIfObjectExists(DataItem* object)
 {
 	for (unsigned int i = 0; i < objects.size(); i++)
 	{
-		if (object->getName() == objects[i]->getName())
+		if (compareStrings(object->getName(), objects[i]->getName()) == true)
 			if (object->getQuantity() == objects[i]->getQuantity())
-				if (object->getQuantityType() == objects[i]->getQuantityType())
+				if (compareStrings(object->getQuantityType(), objects[i]->getQuantityType()) == true)
 					return true;
 	}
 	return false;
