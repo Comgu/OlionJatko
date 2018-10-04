@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "DataItem.h"
+#include "functions.h"
 
 class ItemList
 {
@@ -10,6 +11,7 @@ protected:
 public:
 	virtual ~ItemList();
 	virtual DataItem* getObject(int i) = 0;
+	virtual std::vector<DataItem*> getContents() = 0;
 	virtual void addObject(DataItem* newObject) = 0;
 	virtual void printAllObjects() = 0;
 
