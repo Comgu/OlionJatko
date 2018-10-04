@@ -22,7 +22,7 @@ void Recipe::setName(const std::string& newName)
 	name = newName;
 }
 
-std::vector<DataItem*> Recipe::getRecipe()
+std::vector<DataItem*> Recipe::getContents()
 {
 	return objects;
 }

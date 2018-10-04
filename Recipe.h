@@ -13,7 +13,7 @@ public:
 
 	std::string getName();															// Get & Set
 	void setName(const std::string& newName);
-	std::vector<DataItem*> getRecipe();
+	std::vector<DataItem*> getContents() override;
 	DataItem* getObject(int i) override;
 	void addObject(DataItem* newObject) override;
 	void printAllObjects() override;
