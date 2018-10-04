@@ -15,7 +15,7 @@ public:
 	DataItem* getObject(int i) override;
 	std::vector<DataItem*> getContents() override;
 	void addObject(DataItem* newObject) override;
-	void addObjectsFromRecipe(Recipe* recipeObjects);
+	void addObject(Recipe* recipeObjects);
 	void printAllObjects() override;
 	int findObjectPos(DataItem* object);
 	bool findIfObjectExistsName(DataItem* object);

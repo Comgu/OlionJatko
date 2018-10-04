@@ -52,7 +52,7 @@ void ShoppingList::addObject(DataItem* newObject)
 	}
 }
 
-void ShoppingList::addObjectsFromRecipe(Recipe* recipeObjects)
+void ShoppingList::addObject(Recipe* recipeObjects)
 {
 	std::vector<DataItem*> tempVector = recipeObjects->getContents();
 	for (unsigned int i = 0; i < tempVector.size(); i++)
