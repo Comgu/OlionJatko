@@ -7,7 +7,7 @@ class ItemList
 {
 protected:
 	std::vector<DataItem*> objects{};
-
+	ItemList();
 public:
 	virtual ~ItemList();
 	virtual DataItem* getObject(int i) = 0;
@@ -15,7 +15,4 @@ public:
 	virtual void addObject(DataItem* newObject) = 0;
 	virtual void deleteObject(int pos) = 0;
 	virtual void printAllObjects() = 0;
-
-protected:
-	ItemList();
 };
