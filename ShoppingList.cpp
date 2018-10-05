@@ -72,6 +72,12 @@ void ShoppingList::addObject(Recipe* recipeObjects)
 	}
 }
 
+void ShoppingList::deleteObject(int pos)
+{
+	objects.erase(objects.begin() + pos);
+}
+
+
 void ShoppingList::printAllObjects()
 {
 	std::cout << "\n" << name << " contents:\n";

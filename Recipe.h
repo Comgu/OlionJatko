@@ -16,5 +16,6 @@ public:
 	std::vector<DataItem*> getContents() override;
 	DataItem* getObject(int i) override;
 	void addObject(DataItem* newObject) override;
+	void deleteObject(int pos) override;
 	void printAllObjects() override;
 };

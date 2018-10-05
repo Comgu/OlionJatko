@@ -33,6 +33,11 @@ void DataItemList::addObject(DataItem* newObject)
 		std::cout << "\nObject " << newObject->getName() << " " << newObject->getQuantity() << " " << newObject->getQuantityType() << " already exists\n";
 }
 
+void DataItemList::deleteObject(int pos)
+{
+	objects.erase(objects.begin() + pos);
+}
+
 void DataItemList::printAllObjects()
 {
 	for (unsigned int i = 0; i < objects.size(); i++)

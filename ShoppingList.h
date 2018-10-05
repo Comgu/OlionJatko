@@ -16,6 +16,7 @@ public:
 	std::vector<DataItem*> getContents() override;
 	void addObject(DataItem* newObject) override;
 	void addObject(Recipe* recipeObjects);
+	void deleteObject(int pos) override;
 	void printAllObjects() override;
 	int findObjectPos(DataItem* object);
 	bool findIfObjectExistsName(DataItem* object);
