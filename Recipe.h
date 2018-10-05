@@ -8,6 +8,7 @@ class Recipe : public ItemList
 private:
 	std::string name;
 public:
+	Recipe();
 	Recipe(const std::string& newName);
 	~Recipe();
 

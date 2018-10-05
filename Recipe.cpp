@@ -2,6 +2,10 @@
 #include <iostream>
 
 
+Recipe::Recipe()
+{
+
+}
 
 Recipe::Recipe(const std::string& newName)
 {
