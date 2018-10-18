@@ -27,7 +27,7 @@ std::vector<DataItem*> DataItemList::getContents()
 
 void DataItemList::addObject(DataItem* newObject)
 {
-	if (findIfObjectExists(newObject) == false)
+	if (findIfObjectExists(newObject) == false)				// If object doesn't exist, adds it to vector, else outputs warning message
 		objects.push_back(newObject);
 	else
 		std::cout << "\nObject " << newObject->getName() << " " << newObject->getQuantity() << " " << newObject->getQuantityType() << " already exists\n";
@@ -42,7 +42,7 @@ void DataItemList::printAllObjects()
 {
 	for (unsigned int i = 0; i < objects.size(); i++)
 	{
-		std::cout << i+1 << " " << objects[i]->toString() << "\n";
+		std::cout << i+1 << " " << objects[i]->toString() << "\n";							// Prints output from toString function
 	}
 }
 
@@ -55,23 +55,23 @@ DataItemList* DataItemList::getInstance()
 
 int DataItemList::findObjectPos(DataItem* object)
 {
-		for (unsigned int i = 0; i < objects.size(); i++)
+		for (unsigned int i = 0; i < objects.size(); i++)													// Loop for the size of vector objects
 		{
-			if (compareStrings(object->getName(), objects[i]->getName()) == true)
-				if (object->getQuantity() == objects[i]->getQuantity())
-					if (compareStrings(object->getQuantityType(), objects[i]->getQuantityType()) == true)
-						return i;
+			if (compareStrings(object->getName(), objects[i]->getName()) == true)							// Compares by name using helper function compareStrings
+				if (object->getQuantity() == objects[i]->getQuantity())										// Compares by quantity
+					if (compareStrings(object->getQuantityType(), objects[i]->getQuantityType()) == true)	// Compares by quantityType using helper function compareStrings
+						return i;																			// Returns position
 		}
-	return 0;
+	return 0;			// Should not happen 
 }
 
 bool DataItemList::findIfObjectExists(DataItem* object)
 {
-	for (unsigned int i = 0; i < objects.size(); i++)
+	for (unsigned int i = 0; i < objects.size(); i++)														// Loop for the size of vector objects
 	{
-		if (compareStrings(object->getName(), objects[i]->getName()) == true)
-			if (object->getQuantity() == objects[i]->getQuantity())
-				if (compareStrings(object->getQuantityType(), objects[i]->getQuantityType()) == true)
+		if (compareStrings(object->getName(), objects[i]->getName()) == true)								// Compares by name using helper function compareStrings
+			if (object->getQuantity() == objects[i]->getQuantity())											// Compares by quantity
+				if (compareStrings(object->getQuantityType(), objects[i]->getQuantityType()) == true)		// Compares by quantityType using helper function compareStrings
 					return true;
 	}
 	return false;

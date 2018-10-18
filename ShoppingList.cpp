@@ -38,12 +38,12 @@ DataItem* ShoppingList::getObject(int i)
 
 void ShoppingList::addObject(DataItem* newObject)
 {
-	if (findIfObjectExistsName(newObject) == false)
+	if (findIfObjectExistsName(newObject) == false)								// If object doesn't exist, adds it to vector
 		objects.push_back(newObject);
 	else
 	{
-		int pos = findObjectPos(newObject);
-		if (compareStrings(objects[pos]->getQuantityType(), newObject->getQuantityType())==true)
+		int pos = findObjectPos(newObject);										// Finds position of object
+		if (compareStrings(objects[pos]->getQuantityType(), newObject->getQuantityType())==true)			/* Compares by quantityType and combines the quantities if true, else adds object to vector without combining*/
 		{
 			objects[pos] = new DataItem(newObject->getName(), newObject->getQuantity() + objects[pos]->getQuantity(), newObject->getQuantityType());
 		}
@@ -54,20 +54,20 @@ void ShoppingList::addObject(DataItem* newObject)
 
 void ShoppingList::addObject(Recipe* recipeObjects)
 {
-	std::vector<DataItem*> tempVector = recipeObjects->getContents();
+	std::vector<DataItem*> tempVector = recipeObjects->getContents();					// Copies vector to a temporary one
 	for (unsigned int i = 0; i < tempVector.size(); i++)
 	{
-		if (findIfObjectExistsName(tempVector[i]) == false)
+		if (findIfObjectExistsName(tempVector[i]) == false)								// If object doesn't exist, adds it to vector
 			objects.push_back(tempVector[i]);
 		else
 		{
-			int pos = findObjectPos(tempVector[i]);
-			if (compareStrings(objects[pos]->getQuantityType(), tempVector[i]->getQuantityType())==true)
+			int pos = findObjectPos(tempVector[i]);										// Finds position of object
+			if (compareStrings(objects[pos]->getQuantityType(), tempVector[i]->getQuantityType())==true)		/* Compares by quantityType and combines the quantities if true, else adds object to vector without combining*/
 			{
 				objects[pos] = new DataItem(tempVector[i]->getName(), tempVector[i]->getQuantity() + objects[pos]->getQuantity(), tempVector[i]->getQuantityType());
 			}
 			else
-				objects.push_back(tempVector[i]);
+				objects.push_back(tempVector[i]);									
 		}
 	}
 }
@@ -83,15 +83,15 @@ void ShoppingList::printAllObjects()
 	std::cout << "\n" << name << " contents:\n";
 	for (unsigned int i = 0; i < objects.size(); i++)
 	{
-		std::cout << i + 1 << " " << objects[i]->toString() << "\n";
+		std::cout << i + 1 << " " << objects[i]->toString() << "\n";					// Prints output from toString function
 	}
 }
 
 int ShoppingList::findObjectPos(DataItem* object)
 {
-	for (unsigned int i = 0; i < objects.size(); i++)
+	for (unsigned int i = 0; i < objects.size(); i++)									// Loop for the size of vector objects
 	{
-		if (compareStrings(object->getName(), objects[i]->getName())==true)
+		if (compareStrings(object->getName(), objects[i]->getName())==true)				// Compares by name using helper function compareStrings
 					return i;
 	}
 	return 0;
@@ -99,9 +99,9 @@ int ShoppingList::findObjectPos(DataItem* object)
 
 bool ShoppingList::findIfObjectExistsName(DataItem* object)
 {
-	for (unsigned int i = 0; i < objects.size(); i++)
+	for (unsigned int i = 0; i < objects.size(); i++)									// Loop for the size of vector objects
 	{
-		if (compareStrings(object->getName(), objects[i]->getName())==true)
+		if (compareStrings(object->getName(), objects[i]->getName())==true)				// Compares by name using helper function compareStrings
 					return true;
 	}
 	return false;

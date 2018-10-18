@@ -51,6 +51,6 @@ void Recipe::printAllObjects()
 	std::cout << "\n" << name << " contents:\n";
 	for (unsigned int i = 0; i < objects.size(); i++)
 	{
-		std::cout  << objects[i]->toString() << "\n";
+		std::cout  << objects[i]->toString() << "\n";							// Prints output from toString function
 	}
 }
