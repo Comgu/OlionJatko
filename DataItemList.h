@@ -26,4 +26,5 @@ public:
 	int findObjectPos(DataItem* object);					/*!< Finds position of DataItem* object and returns it in int type. Should only be used if object exists*/
 	int findObjectPos(std::string name, double quant, std::string quantType);
 	bool findIfObjectExists(DataItem* object);				/*!< Finds if duplicate object exists in vector and returns true if it does. Compares objects by name, quantity and quantityType*/
+	bool findIfObjectExists(std::string name, double quant, std::string quantType);
 };

@@ -90,3 +90,15 @@ bool DataItemList::findIfObjectExists(DataItem* object)
 	}
 	return false;
 }
+
+bool DataItemList::findIfObjectExists(std::string name, double quant, std::string quantType)
+{
+	for (unsigned int i = 0; i < objects.size(); i++)														// Loop for the size of vector objects
+	{
+		if (compareStrings(name, objects[i]->getName()) == true)								// Compares by name using helper function compareStrings
+			if (quant == objects[i]->getQuantity())											// Compares by quantity
+				if (compareStrings(quantType, objects[i]->getQuantityType()) == true)		// Compares by quantityType using helper function compareStrings
+					return true;
+	}
+	return false;
+}
