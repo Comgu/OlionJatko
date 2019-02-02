@@ -13,6 +13,8 @@ DataItemList::DataItemList()
 
 DataItemList::~DataItemList()
 {
+	for (auto p : objects)
+		delete p;
 }
 
 DataItem* DataItemList::getObject(int i)
@@ -62,6 +64,18 @@ int DataItemList::findObjectPos(DataItem* object)
 					if (compareStrings(object->getQuantityType(), objects[i]->getQuantityType()) == true)	// Compares by quantityType using helper function compareStrings
 						return i;																			// Returns position
 		}
+	return 0;			// Should not happen 
+}
+
+int DataItemList::findObjectPos(std::string name, double quant, std::string quantType)
+{
+	for (unsigned int i = 0; i < objects.size(); i++)													// Loop for the size of vector objects
+	{
+		if (compareStrings(name, objects[i]->getName()) == true)							// Compares by name using helper function compareStrings
+			if (quant == objects[i]->getQuantity())										// Compares by quantity
+				if (compareStrings(quantType, objects[i]->getQuantityType()) == true)	// Compares by quantityType using helper function compareStrings
+					return i;																			// Returns position
+	}
 	return 0;			// Should not happen 
 }
 

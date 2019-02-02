@@ -8,6 +8,7 @@
 	Attributes: vector<DataItem*> objects, DataItemList* instance.
 
 	Methods: Constructor, Destructor, getObject, getContents, addObject, deleteObject, printAllObjects, getInstance, findObjectPos and findIfObjectExists.
+
 */
 class DataItemList : public ItemList
 {
@@ -23,5 +24,6 @@ public:
 	void printAllObjects() override;						/*!< Prints all objects in vector using function toString from DataItem class*/
 	static DataItemList* getInstance();						/*!< Creates a Singleton instance of class*/
 	int findObjectPos(DataItem* object);					/*!< Finds position of DataItem* object and returns it in int type. Should only be used if object exists*/
+	int findObjectPos(std::string name, double quant, std::string quantType);
 	bool findIfObjectExists(DataItem* object);				/*!< Finds if duplicate object exists in vector and returns true if it does. Compares objects by name, quantity and quantityType*/
 };

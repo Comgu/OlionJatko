@@ -1,4 +1,4 @@
-#define CATCH_CONFIG_RUNNER  // Own main()
+//#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 #include "functions.h"
 #include "DataItem.h"
@@ -6,7 +6,7 @@
 #include "Recipe.h"
 #include "ShoppingList.h"
 #include "Factory.h"
-
+/*
 DataItem* dataItem = new DataItem("Chicken", 300, "g");
 Recipe * recipe = new Recipe("Recipe");
 ShoppingList * shoppingList = new ShoppingList("ShoppingList");
@@ -82,4 +82,4 @@ TEST_CASE("Factory tests", "[factory]")
 	REQUIRE(recipeFactory->getName() == "Factory recipe");
 	ShoppingList * shoppingFactory = factory->createShoppingList("Factory list");
 	REQUIRE(shoppingFactory->getName() == "Factory list");
-}
+}*/
