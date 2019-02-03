@@ -4,30 +4,25 @@
 #include <algorithm>
 #include <vector>
 
-
-DataItemList* DataItemList::instance = NULL;
-
-DataItemList::DataItemList()
-{
-}
-
 DataItemList::~DataItemList()
 {
-	for (auto p : objects)
-		delete p;
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects.erase(objects.begin() + i);
+
+	objects.clear();
 }
 
-DataItem* DataItemList::getObject(int i)
+std::shared_ptr<DataItem> DataItemList::getObject(int i)
 {
 	return objects[i];
 }
 
-std::vector<DataItem*> DataItemList::getContents()
+std::vector<std::shared_ptr<DataItem>> DataItemList::getContents()
 {
 	return objects;
 }
 
-void DataItemList::addObject(DataItem* newObject)
+void DataItemList::addObject(std::shared_ptr<DataItem> newObject)
 {
 	if (findIfObjectExists(newObject) == false)				// If object doesn't exist, adds it to vector, else outputs warning message
 		objects.push_back(newObject);
@@ -48,14 +43,14 @@ void DataItemList::printAllObjects()
 	}
 }
 
-DataItemList* DataItemList::getInstance()
+DataItemList& DataItemList::getInstance()
 {
-	if (instance == NULL)
-		instance = new DataItemList();
+	static DataItemList instance;
+
 	return instance;
 }
 
-int DataItemList::findObjectPos(DataItem* object)
+int DataItemList::findObjectPos(std::shared_ptr<DataItem> object)
 {
 		for (unsigned int i = 0; i < objects.size(); i++)													// Loop for the size of vector objects
 		{
@@ -79,7 +74,7 @@ int DataItemList::findObjectPos(std::string name, double quant, std::string quan
 	return 0;			// Should not happen 
 }
 
-bool DataItemList::findIfObjectExists(DataItem* object)
+bool DataItemList::findIfObjectExists(std::shared_ptr<DataItem> object)
 {
 	for (unsigned int i = 0; i < objects.size(); i++)														// Loop for the size of vector objects
 	{
