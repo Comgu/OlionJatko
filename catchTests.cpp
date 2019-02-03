@@ -6,7 +6,8 @@
 #include "Recipe.h"
 #include "ShoppingList.h"
 #include "Factory.h"
-/*
+/*				OUTDATES TESTS
+
 DataItem* dataItem = new DataItem("Chicken", 300, "g");
 Recipe * recipe = new Recipe("Recipe");
 ShoppingList * shoppingList = new ShoppingList("ShoppingList");

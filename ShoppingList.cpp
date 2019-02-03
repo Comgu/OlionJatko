@@ -14,6 +14,10 @@ ShoppingList::ShoppingList()
 
 ShoppingList::~ShoppingList()
 {
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects.erase(objects.begin() + i);
+
+	objects.clear();
 }
 
 std::string ShoppingList::getName()
@@ -26,17 +30,17 @@ void ShoppingList::setName(const std::string& newName)
 	name = newName;
 }
 
-std::vector<DataItem*> ShoppingList::getContents()
+std::vector<std::shared_ptr<DataItem>> ShoppingList::getContents()
 {
 	return objects;
 }
 
-DataItem* ShoppingList::getObject(int i)
+std::shared_ptr<DataItem> ShoppingList::getObject(int i)
 {
 	return objects[i];
 }
 
-void ShoppingList::addObject(DataItem* newObject)
+void ShoppingList::addObject(std::shared_ptr<DataItem> newObject)
 {
 	if (findIfObjectExistsName(newObject) == false)								// If object doesn't exist, adds it to vector
 		objects.push_back(newObject);
@@ -45,16 +49,16 @@ void ShoppingList::addObject(DataItem* newObject)
 		int pos = findObjectPos(newObject);										// Finds position of object
 		if (compareStrings(objects[pos]->getQuantityType(), newObject->getQuantityType())==true)			/* Compares by quantityType and combines the quantities if true, else adds object to vector without combining*/
 		{
-			objects[pos] = new DataItem(newObject->getName(), newObject->getQuantity() + objects[pos]->getQuantity(), newObject->getQuantityType());
-		}
+			objects[pos] = std::shared_ptr<DataItem>{ new DataItem{newObject->getName(), newObject->getQuantity() + objects[pos]->getQuantity(), newObject->getQuantityType()} };
+		}			 
 		else
 			objects.push_back(newObject);
 	}
 }
 
-void ShoppingList::addObject(Recipe* recipeObjects)
+void ShoppingList::addObject(Recipe& recipe)
 {
-	std::vector<DataItem*> tempVector = recipeObjects->getContents();					// Copies vector to a temporary one
+	std::vector<std::shared_ptr<DataItem>> tempVector = recipe.getContents();					// Copies vector to a temporary one
 	for (unsigned int i = 0; i < tempVector.size(); i++)
 	{
 		if (findIfObjectExistsName(tempVector[i]) == false)								// If object doesn't exist, adds it to vector
@@ -64,7 +68,7 @@ void ShoppingList::addObject(Recipe* recipeObjects)
 			int pos = findObjectPos(tempVector[i]);										// Finds position of object
 			if (compareStrings(objects[pos]->getQuantityType(), tempVector[i]->getQuantityType())==true)		/* Compares by quantityType and combines the quantities if true, else adds object to vector without combining*/
 			{
-				objects[pos] = new DataItem(tempVector[i]->getName(), tempVector[i]->getQuantity() + objects[pos]->getQuantity(), tempVector[i]->getQuantityType());
+				objects[pos] = std::shared_ptr<DataItem>{ new DataItem{tempVector[i]->getName(), tempVector[i]->getQuantity() + objects[pos]->getQuantity(), tempVector[i]->getQuantityType()} };
 			}
 			else
 				objects.push_back(tempVector[i]);									
@@ -83,11 +87,13 @@ void ShoppingList::printAllObjects()
 	std::cout << "\n" << name << " contents:\n";
 	for (unsigned int i = 0; i < objects.size(); i++)
 	{
-		std::cout << i + 1 << " " << objects[i]->toString() << "\n";					// Prints output from toString function
+		std::cout << objects[i]->toString();					// Prints output from toString function
 	}
+
+	std::cout << "\n";
 }
 
-int ShoppingList::findObjectPos(DataItem* object)
+int ShoppingList::findObjectPos(std::shared_ptr<DataItem> object)
 {
 	for (unsigned int i = 0; i < objects.size(); i++)									// Loop for the size of vector objects
 	{
@@ -97,7 +103,7 @@ int ShoppingList::findObjectPos(DataItem* object)
 	return 0;
 }
 
-bool ShoppingList::findIfObjectExistsName(DataItem* object)
+bool ShoppingList::findIfObjectExistsName(std::shared_ptr<DataItem> object)
 {
 	for (unsigned int i = 0; i < objects.size(); i++)									// Loop for the size of vector objects
 	{

@@ -2,6 +2,7 @@
 #include <vector>
 #include "DataItem.h"
 #include "functions.h"
+#include <memory>
 
 
 /*! ItemList class, parent class of Recipe, ShoppingList and DataItemList
@@ -17,13 +18,13 @@
 class ItemList
 {
 protected:
-	std::vector<DataItem*> objects{};					/*!< objects is a vector consisting of pointers to DataItem objects*/
+	std::vector<std::shared_ptr<DataItem>> objects{};					/*!< objects is a vector consisting of pointers to DataItem objects*/
 	ItemList();											/*!< default constructor*/
 public:
 	virtual ~ItemList();								/*!< Virtual destructor*/
-	virtual DataItem* getObject(int i) = 0;				/*!< Virtual getObject method with no implementation*/
-	virtual std::vector<DataItem*> getContents() = 0;	/*!< Virtual getContents method with no implementation*/
-	virtual void addObject(DataItem* newObject) = 0;	/*!< Virtual addObject method with no implementation*/
+	virtual std::shared_ptr<DataItem> getObject(int i) = 0;				/*!< Virtual getObject method with no implementation*/
+	virtual std::vector<std::shared_ptr<DataItem>> getContents() = 0;	/*!< Virtual getContents method with no implementation*/
+	virtual void addObject(std::shared_ptr<DataItem> newObject) = 0;	/*!< Virtual addObject method with no implementation*/
 	virtual void deleteObject(int pos) = 0;				/*!< Virtual deleteObject method with no implementation*/
 	virtual void printAllObjects() = 0;					/*!< Virtual printAllObjects method with no implementation*/
 };

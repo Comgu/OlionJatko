@@ -14,6 +14,10 @@ Recipe::Recipe(const std::string& newName)
 
 Recipe::~Recipe()
 {
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects.erase(objects.begin() + i);
+
+	objects.clear();
 }
 
 std::string Recipe::getName()
@@ -26,17 +30,17 @@ void Recipe::setName(const std::string& newName)
 	name = newName;
 }
 
-std::vector<DataItem*> Recipe::getContents()
+std::vector<std::shared_ptr<DataItem>> Recipe::getContents()
 {
 	return objects;
 }
 
-DataItem* Recipe::getObject(int i)
+std::shared_ptr<DataItem> Recipe::getObject(int i)
 {
 	return objects[i];
 }
 
-void Recipe::addObject(DataItem* newObject)
+void Recipe::addObject(std::shared_ptr<DataItem> newObject)
 {
 	objects.push_back(newObject);
 }
