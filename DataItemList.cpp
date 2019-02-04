@@ -39,7 +39,7 @@ void DataItemList::printAllObjects()
 {
 	for (unsigned int i = 0; i < objects.size(); i++)
 	{
-		std::cout << i+1 << " " << objects[i]->toString() << "\n";							// Prints output from toString function
+		std::cout << objects[i]->toString();							// Prints output from toString function
 	}
 }
 

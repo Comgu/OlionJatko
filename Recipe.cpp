@@ -52,9 +52,9 @@ void Recipe::deleteObject(int pos)
 
 void Recipe::printAllObjects()
 {
-	std::cout << "\n" << name << " contents:\n";
+	std::cout << name << " contents:\n";
 	for (unsigned int i = 0; i < objects.size(); i++)
 	{
-		std::cout  << objects[i]->toString() << "\n";							// Prints output from toString function
+		std::cout << objects[i]->toString();							// Prints output from toString function
 	}
 }
