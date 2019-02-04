@@ -10,12 +10,14 @@ private:
 	RecipeList(RecipeList const&);
 	RecipeList() {}
 public:
+	void addObject(std::shared_ptr<Recipe> newObject);
 	std::shared_ptr<Recipe> getObject(int i);
 	static RecipeList& getInstance();
+	void printAllObjects();
 	virtual ~RecipeList() = default;
-	bool findIfObjectExists(Recipe& recipe);
-	bool findIfObjectExists(std::string name);
-	int findObjectPos(Recipe& recipe);
+	int findObjectPos(std::shared_ptr<Recipe> recipe);
 	int findObjectPos(std::string name);
+	bool findIfObjectExists(std::shared_ptr<Recipe> recipe);
+	bool findIfObjectExists(std::string name);
 };
 
