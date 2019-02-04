@@ -11,15 +11,6 @@ ShoppingList::ShoppingList()
 {
 }
 
-
-ShoppingList::~ShoppingList()
-{
-	for (unsigned int i = 0; i < objects.size(); i++)
-		objects.erase(objects.begin() + i);
-
-	objects.clear();
-}
-
 std::string ShoppingList::getName()
 {
 	return name;
@@ -56,9 +47,9 @@ void ShoppingList::addObject(std::shared_ptr<DataItem> newObject)
 	}
 }
 
-void ShoppingList::addObject(Recipe& recipe)
+void ShoppingList::addObject(std::shared_ptr<Recipe> recipe)
 {
-	std::vector<std::shared_ptr<DataItem>> tempVector = recipe.getContents();					// Copies vector to a temporary one
+	std::vector<std::shared_ptr<DataItem>> tempVector = recipe->getContents();					// Copies vector to a temporary one
 	for (unsigned int i = 0; i < tempVector.size(); i++)
 	{
 		if (findIfObjectExistsName(tempVector[i]) == false)								// If object doesn't exist, adds it to vector
