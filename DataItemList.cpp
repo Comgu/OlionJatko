@@ -19,7 +19,7 @@ void DataItemList::addObject(std::shared_ptr<DataItem> newObject)
 	if (findIfObjectExists(newObject) == false)				// If object doesn't exist, adds it to vector, else outputs warning message
 		objects.push_back(newObject);
 	else
-		std::cout << "\nObject " << newObject->getName() << " " << newObject->getQuantity() << " " << newObject->getQuantityType() << " already exists\n";
+		std::cout << "Object " << newObject->getName() << " " << newObject->getQuantity() << " " << newObject->getQuantityType() << " already exists\n";
 }
 
 void DataItemList::deleteObject(int pos)

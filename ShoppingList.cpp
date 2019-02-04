@@ -50,19 +50,17 @@ void ShoppingList::addObject(std::shared_ptr<DataItem> newObject)
 void ShoppingList::addObject(std::shared_ptr<Recipe> recipe)
 {
 	std::vector<std::shared_ptr<DataItem>> tempVector = recipe->getContents();					// Copies vector to a temporary one
-	for (unsigned int i = 0; i < tempVector.size(); i++)
-	{
+
+	for (unsigned int i = 0; i < tempVector.size(); i++){
 		if (findIfObjectExistsName(tempVector[i]) == false)								// If object doesn't exist, adds it to vector
 			objects.push_back(tempVector[i]);
 		else
 		{
 			int pos = findObjectPos(tempVector[i]);										// Finds position of object
 			if (compareStrings(objects[pos]->getQuantityType(), tempVector[i]->getQuantityType())==true)		/* Compares by quantityType and combines the quantities if true, else adds object to vector without combining*/
-			{
 				objects[pos] = std::shared_ptr<DataItem>{ new DataItem{tempVector[i]->getName(), tempVector[i]->getQuantity() + objects[pos]->getQuantity(), tempVector[i]->getQuantityType()} };
-			}
 			else
-				objects.push_back(tempVector[i]);									
+				objects.push_back(tempVector[i]);
 		}
 	}
 }
