@@ -19,9 +19,9 @@ class ItemList
 {
 protected:
 	std::vector<std::shared_ptr<DataItem>> objects{};					/*!< objects is a vector consisting of pointers to DataItem objects*/
-	ItemList();											/*!< default constructor*/
+	ItemList() {};											/*!< default constructor*/
 public:
-	virtual ~ItemList();								/*!< Virtual destructor*/
+	virtual ~ItemList() = default;								/*!< Virtual destructor*/
 	virtual std::shared_ptr<DataItem> getObject(int i) = 0;				/*!< Virtual getObject method with no implementation*/
 	virtual std::vector<std::shared_ptr<DataItem>> getContents() = 0;	/*!< Virtual getContents method with no implementation*/
 	virtual void addObject(std::shared_ptr<DataItem> newObject) = 0;	/*!< Virtual addObject method with no implementation*/

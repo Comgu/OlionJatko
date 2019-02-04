@@ -12,14 +12,6 @@ Recipe::Recipe(const std::string& newName)
 	name = newName;
 }
 
-Recipe::~Recipe()
-{
-	for (unsigned int i = 0; i < objects.size(); i++)
-		objects.erase(objects.begin() + i);
-
-	objects.clear();
-}
-
 std::string Recipe::getName()
 {
 	return name;

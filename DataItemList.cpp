@@ -4,14 +4,6 @@
 #include <algorithm>
 #include <vector>
 
-DataItemList::~DataItemList()
-{
-	for (unsigned int i = 0; i < objects.size(); i++)
-		objects.erase(objects.begin() + i);
-
-	objects.clear();
-}
-
 std::shared_ptr<DataItem> DataItemList::getObject(int i)
 {
 	return objects[i];

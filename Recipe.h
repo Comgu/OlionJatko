@@ -19,7 +19,6 @@ private:
 public:
 	Recipe();									/*!< Default constructor*/
 	Recipe(const std::string& newName);			/*!< Constructor with name*/
-	~Recipe();									/*!< Default destructor*/
 
 	std::string getName();												/*!< Gets string name from Recipe attributes*/		
 	void setName(const std::string& newName);							/*!< Sets a new name for string name*/
