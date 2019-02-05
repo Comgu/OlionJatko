@@ -14,6 +14,7 @@ public:
 	std::shared_ptr<Recipe> getObject(int i);
 	static RecipeList& getInstance();
 	void printAllObjects();
+	void printRecipeNames();
 	virtual ~RecipeList() = default;
 	int findObjectPos(std::shared_ptr<Recipe> recipe);
 	int findObjectPos(std::string name);
