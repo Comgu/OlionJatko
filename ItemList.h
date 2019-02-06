@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "DataItem.h"
+#include "dataitem.h"
 #include "functions.h"
 #include <memory>
 
@@ -26,5 +26,5 @@ public:
 	virtual std::vector<std::shared_ptr<DataItem>> getContents() = 0;	/*!< Virtual getContents method with no implementation*/
 	virtual void addObject(std::shared_ptr<DataItem> newObject) = 0;	/*!< Virtual addObject method with no implementation*/
 	virtual void deleteObject(int pos) = 0;				/*!< Virtual deleteObject method with no implementation*/
-	virtual void printAllObjects() = 0;					/*!< Virtual printAllObjects method with no implementation*/
+	virtual std::string toString() = 0;					/*!< Virtual printAllObjects method with no implementation*/
 };

@@ -1,5 +1,6 @@
-#include "Recipe.h"
+#include "recipe.h"
 #include <iostream>
+#include <sstream>
 
 
 Recipe::Recipe()
@@ -42,11 +43,12 @@ void Recipe::deleteObject(int pos)
 	objects.erase(objects.begin() + pos);
 }
 
-void Recipe::printAllObjects()
+std::string Recipe::toString()
 {
-	std::cout << name << " contents:\n";
+	std::stringstream outputString;
+	outputString << name << " contents:\n";
 	for (unsigned int i = 0; i < objects.size(); i++)
-	{
-		std::cout << objects[i]->toString();							// Prints output from toString function
-	}
+		outputString << objects[i]->toString();							// Prints output from toString function
+
+	return outputString.str();
 }

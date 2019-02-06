@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Recipe.h"
+#include "recipe.h"
 #include <vector>
 
 class RecipeList
@@ -13,8 +13,8 @@ public:
 	void addObject(std::shared_ptr<Recipe> newObject);
 	std::shared_ptr<Recipe> getObject(int i);
 	static RecipeList& getInstance();
-	void printAllObjects();
-	void printRecipeNames();
+	std::string toString();
+	std::string toStringNames();
 	virtual ~RecipeList() = default;
 	int findObjectPos(std::shared_ptr<Recipe> recipe);
 	int findObjectPos(std::string name);

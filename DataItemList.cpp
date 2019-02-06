@@ -1,8 +1,9 @@
-#include "DataItemList.h"
-#include "DataItem.h"
+#include "dataitemlist.h"
+#include "dataitem.h"
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <sstream>
 
 std::shared_ptr<DataItem> DataItemList::getObject(int i)
 {
@@ -27,12 +28,13 @@ void DataItemList::deleteObject(int pos)
 	objects.erase(objects.begin() + pos);
 }
 
-void DataItemList::printAllObjects()
+std::string DataItemList::toString()
 {
+	std::stringstream outputString;
 	for (unsigned int i = 0; i < objects.size(); i++)
-	{
-		std::cout << objects[i]->toString();							// Prints output from toString function
-	}
+		outputString << objects[i]->toString();							// Prints output from toString function
+
+	return outputString.str();
 }
 
 DataItemList& DataItemList::getInstance()

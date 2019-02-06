@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "DataItem.h"
-#include "ItemList.h"
+#include "dataitem.h"
+#include "itemlist.h"
 
 
 /*! Recipe class, subclass of ItemList
@@ -26,5 +26,5 @@ public:
 	std::shared_ptr<DataItem> getObject(int i) override;								/*!< Gets a DataItem object from position i at vector<DataItem*> objects*/
 	void addObject(std::shared_ptr<DataItem> newObject) override;						/*!< Adds a DataItem object to vector*/
 	void deleteObject(int pos) override;								/*!< Deletes a DataItem object from vector at position pos*/
-	void printAllObjects() override;									/*!< Prints all objects in vector using function toString from DataItem class*/
+	std::string toString() override;									/*!< Prints all objects in vector using function toString from DataItem class*/
 };

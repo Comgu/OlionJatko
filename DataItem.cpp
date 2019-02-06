@@ -1,4 +1,4 @@
-#include "DataItem.h"
+#include "dataitem.h"
 #include <iostream>
 #include <sstream>
 
@@ -57,7 +57,5 @@ std::string DataItem::toString()
 	std::stringstream outputString;
 	outputString << name << " - " << quantity << " " << quantityType << "\n";		// Forms a string from attributes
 
-	std::string returnString = outputString.str();												// Copies generated string to variable for return
-
-	return returnString;
+	return outputString.str();
 }

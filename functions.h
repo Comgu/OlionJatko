@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include "ItemList.h"
+#include "itemlist.h"
 
 /*! Contains helper function compareStrings.
 */

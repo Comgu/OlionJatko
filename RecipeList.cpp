@@ -1,5 +1,6 @@
-#include "RecipeList.h"
+#include "recipelist.h"
 #include <iostream>
+#include <sstream>
 
 void RecipeList::addObject(std::shared_ptr<Recipe> newObject)
 {
@@ -21,19 +22,22 @@ RecipeList& RecipeList::getInstance()
 	return instance;
 }
 
-void RecipeList::printAllObjects()
+std::string RecipeList::toString()
 {
+	std::stringstream outputString;
 	for (unsigned int i = 0; i < recipes.size(); i++)
-	{
-		recipes[i]->printAllObjects();							// Prints output from toString function
-	}
+		outputString << recipes[i]->toString();							// Prints output from toString function
+
+	return outputString.str();
 }
 
-void RecipeList::printRecipeNames() {
-	std::cout << "Recipe list:\n";
-	for (unsigned int i = 0; i < recipes.size(); i++){
-		std::cout << recipes[i]->getName() << "\n";							// Prints output from toString function
-	}
+std::string RecipeList::toStringNames() {
+	std::stringstream outputString;
+	outputString << "Recipes:\n";
+	for (unsigned int i = 0; i < recipes.size(); i++)
+		outputString << recipes[i]->getName() << "\n";							// Prints output from getName function
+
+	return outputString.str();
 }
 
 int RecipeList::findObjectPos(std::shared_ptr<Recipe> recipe) {

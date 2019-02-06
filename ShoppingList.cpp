@@ -1,5 +1,6 @@
-#include "ShoppingList.h"
+#include "shoppinglist.h"
 #include <iostream>
+#include <sstream>
 
 
 ShoppingList::ShoppingList(const std::string& newName)
@@ -71,15 +72,14 @@ void ShoppingList::deleteObject(int pos)
 }
 
 
-void ShoppingList::printAllObjects()
+std::string ShoppingList::toString()
 {
-	std::cout << "\n" << name << " contents:\n";
+	std::stringstream outputString;
+	outputString << name << " contents:\n";
 	for (unsigned int i = 0; i < objects.size(); i++)
-	{
-		std::cout << objects[i]->toString();					// Prints output from toString function
-	}
-
-	std::cout << "\n";
+		outputString << objects[i]->toString();							// Prints output from toString function
+	outputString << "\n";
+	return outputString.str();
 }
 
 int ShoppingList::findObjectPos(std::shared_ptr<DataItem> object)

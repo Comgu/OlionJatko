@@ -1,6 +1,6 @@
 #pragma once
-#include "ItemList.h"
-#include "Recipe.h"
+#include "itemlist.h"
+#include "recipe.h"
 
 
 /*! ShoppingList class, subclass of ItemList
@@ -25,7 +25,7 @@ public:
 	void addObject(std::shared_ptr<DataItem> newObject) override;						/*!< Adds a DataItem object to vector. Checks if object exists already and combines its quantity with existing if possible. Overloaded function with DataItem* parameter*/
 	void addObject(std::shared_ptr<Recipe> recipe);								/*!< Adds all DataItem objects from a Recipe objects to vector. Checks if object exists already and combines its quantity with existing if possible. Overloaded function with Recipe* parameter*/
 	void deleteObject(int pos) override;								/*!< Deletes a DataItem object from vector at position pos*/
-	void printAllObjects() override;									/*!< Prints all objects in vector using function toString from DataItem class*/
+	std::string toString() override;									/*!< Prints all objects in vector using function toString from DataItem class*/
 	int findObjectPos(std::shared_ptr<DataItem> object);								/*!< Finds position of DataItem* object and returns it in int type. Should only be used if object exists*/
 	bool findIfObjectExistsName(std::shared_ptr<DataItem> object);						/*!< Finds if duplicate object exists in vector and returns true if it does. Compares objects by name*/
 
