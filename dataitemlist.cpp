@@ -1,19 +1,7 @@
 #include "dataitemlist.h"
-#include "dataitem.h"
 #include <iostream>
-#include <algorithm>
-#include <vector>
 #include <sstream>
-
-std::shared_ptr<DataItem> DataItemList::getObject(int i)
-{
-	return objects[i];
-}
-
-std::vector<std::shared_ptr<DataItem>> DataItemList::getContents()
-{
-	return objects;
-}
+#include <fstream>
 
 void DataItemList::addObject(std::shared_ptr<DataItem> newObject)
 {
@@ -21,11 +9,6 @@ void DataItemList::addObject(std::shared_ptr<DataItem> newObject)
 		objects.push_back(newObject);
 	else
 		std::cout << "Object " << newObject->getName() << " " << newObject->getQuantity() << " " << newObject->getQuantityType() << " already exists\n";
-}
-
-void DataItemList::deleteObject(int pos)
-{
-	objects.erase(objects.begin() + pos);
 }
 
 std::string DataItemList::toString()
@@ -90,4 +73,39 @@ bool DataItemList::findIfObjectExists(std::string name, double quant, std::strin
 					return true;
 	}
 	return false;
+}
+
+void readCsv(DataItemList& itemList) {
+	std::ifstream infile("items.csv");
+	std::string line;
+	char delim;
+	bool isName = true;
+	std::string cName;
+	double cQuant = 0;
+	std::string cQt;
+
+	while (infile.good()) {
+		while (getline(infile, line)) {
+			std::stringstream ss;
+			ss << line;
+			while (std::getline(ss, line, ',')) {
+				delim = line.at(0);
+				if (isdigit(delim) != 0) {
+					cQuant = std::stoi(line);
+					continue;
+				}
+				if (isName == true) {
+					cName = line;
+					isName = false;
+				}
+				else {
+					cQt = line;
+					isName = true;
+				}
+			}
+			std::shared_ptr<DataItem> item{ new DataItem{cName,cQuant,cQt} };
+			itemList.addObject(item);
+		}
+	}
+	infile.close();
 }

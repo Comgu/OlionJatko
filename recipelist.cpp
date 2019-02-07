@@ -1,6 +1,8 @@
 #include "recipelist.h"
 #include <iostream>
 #include <sstream>
+#include <fstream>
+#include <string>
 
 void RecipeList::addObject(std::shared_ptr<Recipe> newObject)
 {
@@ -70,4 +72,31 @@ bool RecipeList::findIfObjectExists(std::string name) {
 			return true;
 	}
 	return false;
+}
+
+void readCsv(RecipeList& recipeList, DataItemList& itemList) {
+	std::ifstream infile("recipes.csv");
+	std::string line;
+	std::string cName;
+	double cQuant = 0;
+	std::string cQt;
+	while (infile.good()) {
+		while (getline(infile, line)) {
+			std::stringstream ss;
+			ss << line;
+			std::getline(ss, line, ',');
+			cName = line;
+			std::shared_ptr<Recipe> recipe{ new Recipe{cName} };
+			while (std::getline(ss, line, ',')) {
+				std::stringstream ss2;
+				ss2 << line;
+				ss2 >> cName;
+				ss2 >> cQuant;
+				ss2 >> cQt;
+				recipe->addObject(itemList.getObject(itemList.findObjectPos(cName, cQuant, cQt)));
+			}
+			recipeList.addObject(recipe);
+		}
+	}
+	infile.close();
 }

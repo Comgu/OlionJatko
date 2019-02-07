@@ -1,12 +1,5 @@
 #include "recipe.h"
-#include <iostream>
 #include <sstream>
-
-
-Recipe::Recipe()
-{
-
-}
 
 Recipe::Recipe(const std::string& newName)
 {
@@ -23,24 +16,9 @@ void Recipe::setName(const std::string& newName)
 	name = newName;
 }
 
-std::vector<std::shared_ptr<DataItem>> Recipe::getContents()
-{
-	return objects;
-}
-
-std::shared_ptr<DataItem> Recipe::getObject(int i)
-{
-	return objects[i];
-}
-
 void Recipe::addObject(std::shared_ptr<DataItem> newObject)
 {
 	objects.push_back(newObject);
-}
-
-void Recipe::deleteObject(int pos)
-{
-	objects.erase(objects.begin() + pos);
 }
 
 std::string Recipe::toString()

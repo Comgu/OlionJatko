@@ -1,10 +1,5 @@
 #include "dataitem.h"
-#include <iostream>
 #include <sstream>
-
-DataItem::DataItem()
-{
-}
 
 DataItem::DataItem(const std::string& newName)
 {

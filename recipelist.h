@@ -1,7 +1,6 @@
 #pragma once
-
 #include "recipe.h"
-#include <vector>
+#include "dataitemlist.h"
 
 class RecipeList
 {
@@ -22,3 +21,4 @@ public:
 	bool findIfObjectExists(std::string name);
 };
 
+void readCsv(RecipeList& recipeList, DataItemList& itemList);

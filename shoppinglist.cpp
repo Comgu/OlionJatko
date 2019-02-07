@@ -1,15 +1,10 @@
 #include "shoppinglist.h"
-#include <iostream>
 #include <sstream>
 
 
 ShoppingList::ShoppingList(const std::string& newName)
 {
 	name = newName;
-}
-
-ShoppingList::ShoppingList()
-{
 }
 
 std::string ShoppingList::getName()
@@ -20,16 +15,6 @@ std::string ShoppingList::getName()
 void ShoppingList::setName(const std::string& newName)
 {
 	name = newName;
-}
-
-std::vector<std::shared_ptr<DataItem>> ShoppingList::getContents()
-{
-	return objects;
-}
-
-std::shared_ptr<DataItem> ShoppingList::getObject(int i)
-{
-	return objects[i];
 }
 
 void ShoppingList::addObject(std::shared_ptr<DataItem> newObject)
@@ -65,12 +50,6 @@ void ShoppingList::addObject(std::shared_ptr<Recipe> recipe)
 		}
 	}
 }
-
-void ShoppingList::deleteObject(int pos)
-{
-	objects.erase(objects.begin() + pos);
-}
-
 
 std::string ShoppingList::toString()
 {

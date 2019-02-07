@@ -1,8 +1,6 @@
 #pragma once
-#include <vector>
 #include <string>
 #include <algorithm>
-#include "itemlist.h"
 
 /*! Contains helper function compareStrings.
 */
