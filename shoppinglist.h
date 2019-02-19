@@ -3,6 +3,7 @@
 #include "recipe.h"
 #include "functions.h"
 
+
 /*! ShoppingList class, subclass of ItemList
 
 	Class stores DataItem objects in a vector for one ShoppingList. Objects are combined by name and quantityType if possible. 
@@ -15,6 +16,7 @@ class ShoppingList : public ItemList
 {
 private:
 	std::string name;													/*!< Name in string type*/
+	std::vector<std::shared_ptr<Recipe>> recipes;
 public:
 	ShoppingList(const std::string& newName);							/*!< Constructor with name*/
 	ShoppingList() {};													/*!< Default constructor with no param*/
@@ -25,4 +27,5 @@ public:
 	std::string toString() override;									/*!< Prints all objects in vector using function toString from DataItem class*/
 	int findObjectPos(std::shared_ptr<DataItem> object);								/*!< Finds position of DataItem* object and returns it in int type. Should only be used if object exists*/
 	bool findIfObjectExistsName(std::shared_ptr<DataItem> object);						/*!< Finds if duplicate object exists in vector and returns true if it does. Compares objects by name*/
+
 };

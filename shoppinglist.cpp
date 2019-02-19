@@ -35,6 +35,7 @@ void ShoppingList::addObject(std::shared_ptr<DataItem> newObject)
 
 void ShoppingList::addObject(std::shared_ptr<Recipe> recipe)
 {
+	recipes.push_back(recipe);				// Add recipe to recipes 
 	std::vector<std::shared_ptr<DataItem>> tempVector = recipe->getContents();					// Copies vector to a temporary one
 
 	for (unsigned int i = 0; i < tempVector.size(); i++){
@@ -55,6 +56,12 @@ std::string ShoppingList::toString()
 {
 	std::stringstream outputString;
 	outputString << name << " contents:\n";
+	if (recipes.size() > 0)
+		outputString << "Recipes in list: ";
+	for (unsigned int i = 0; i < recipes.size(); i++) {
+		outputString << recipes[i]->getName() << " ";
+	}
+	outputString << "\n";
 	for (unsigned int i = 0; i < objects.size(); i++)
 		outputString << objects[i]->toString();							// Prints output from toString function
 	outputString << "\n";
