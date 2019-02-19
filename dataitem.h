@@ -16,7 +16,7 @@ private:
 	std::string quantityType;		/*!< quantity type in string type, e.g. "gram" or "g"*/
 
 public:															
-	DataItem() {};						/*!< Default constructor with no param*/
+	DataItem() {}					/*!< Default constructor with no param*/
 	DataItem(const std::string& newName);																/*!< Constructor with just name*/
 	DataItem(const std::string& newName, double newQuantity, const std::string& newQuantityType);		/*!< Constructor with all attributes*/
 	~DataItem();					/*!< Default destructor*/
