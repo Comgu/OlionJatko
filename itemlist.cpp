@@ -1,11 +1,11 @@
 #include "itemlist.h"
 
-std::shared_ptr<DataItem> ItemList::getObject(int i)
+std::shared_ptr<DataItem> ItemList::getObject(int i) const
 {
 	return objects[i];
 }
 
-std::vector<std::shared_ptr<DataItem>> ItemList::getContents()
+std::vector<std::shared_ptr<DataItem>> ItemList::getContents() const
 {
 	return objects;
 }

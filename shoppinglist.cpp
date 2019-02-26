@@ -7,7 +7,7 @@ ShoppingList::ShoppingList(const std::string& newName)
 	name = newName;
 }
 
-std::string ShoppingList::getName()
+std::string ShoppingList::getName() const
 {
 	return name;
 }
@@ -17,7 +17,7 @@ void ShoppingList::setName(const std::string& newName)
 	name = newName;
 }
 
-void ShoppingList::addObject(std::shared_ptr<DataItem> newObject)
+void ShoppingList::addObject(const std::shared_ptr<DataItem>& newObject)
 {
 	if (findIfObjectExistsName(newObject) == false)								// If object doesn't exist, adds it to vector
 		objects.push_back(newObject);
@@ -33,7 +33,7 @@ void ShoppingList::addObject(std::shared_ptr<DataItem> newObject)
 	}
 }
 
-void ShoppingList::addObject(std::shared_ptr<Recipe> recipe)
+void ShoppingList::addObject(const std::shared_ptr<Recipe>& recipe)
 {
 	recipes.push_back(recipe);				// Add recipe to recipes 
 	std::vector<std::shared_ptr<DataItem>> tempVector = recipe->getContents();					// Copies vector to a temporary one
@@ -52,7 +52,7 @@ void ShoppingList::addObject(std::shared_ptr<Recipe> recipe)
 	}
 }
 
-std::string ShoppingList::toString()
+std::string ShoppingList::toString() const
 {
 	std::stringstream outputString;
 	outputString << name << " contents:\n";
@@ -68,7 +68,7 @@ std::string ShoppingList::toString()
 	return outputString.str();
 }
 
-int ShoppingList::findObjectPos(std::shared_ptr<DataItem> object)
+int ShoppingList::findObjectPos(const std::shared_ptr<DataItem>& object) const
 {
 	for (unsigned int i = 0; i < objects.size(); i++)									// Loop for the size of vector objects
 	{
@@ -78,7 +78,7 @@ int ShoppingList::findObjectPos(std::shared_ptr<DataItem> object)
 	return 0;
 }
 
-bool ShoppingList::findIfObjectExistsName(std::shared_ptr<DataItem> object)
+bool ShoppingList::findIfObjectExistsName(const std::shared_ptr<DataItem>& object) const
 {
 	for (unsigned int i = 0; i < objects.size(); i++)									// Loop for the size of vector objects
 	{

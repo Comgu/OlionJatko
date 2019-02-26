@@ -1,6 +1,6 @@
 #include "functions.h"
 
-bool compareStrings(const std::string str1, const std::string str2)
+bool compareStrings(const std::string& str1, const std::string& str2)
 {
 	std::string tempStr1 = str1;
 	std::string tempStr2 = str2;

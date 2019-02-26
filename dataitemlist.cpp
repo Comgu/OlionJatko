@@ -3,7 +3,7 @@
 #include <sstream>
 #include <fstream>
 
-void DataItemList::addObject(std::shared_ptr<DataItem> newObject)
+void DataItemList::addObject(const std::shared_ptr<DataItem>& newObject)
 {
 	if (findIfObjectExists(newObject) == false)				// If object doesn't exist, adds it to vector, else outputs warning message
 		objects.push_back(newObject);
@@ -11,7 +11,7 @@ void DataItemList::addObject(std::shared_ptr<DataItem> newObject)
 		std::cout << "Object " << newObject->getName() << " " << newObject->getQuantity() << " " << newObject->getQuantityType() << " already exists\n";
 }
 
-std::string DataItemList::toString()
+std::string DataItemList::toString() const
 {
 	std::stringstream outputString;
 	for (unsigned int i = 0; i < objects.size(); i++)
@@ -27,7 +27,7 @@ DataItemList& DataItemList::getInstance()
 	return instance;
 }
 
-int DataItemList::findObjectPos(std::shared_ptr<DataItem> object)
+int DataItemList::findObjectPos(const std::shared_ptr<DataItem>& object) const
 {
 		for (unsigned int i = 0; i < objects.size(); i++)													// Loop for the size of vector objects
 		{
@@ -39,7 +39,7 @@ int DataItemList::findObjectPos(std::shared_ptr<DataItem> object)
 	return 0;			// Should not happen 
 }
 
-int DataItemList::findObjectPos(std::string name, double quant, std::string quantType)
+int DataItemList::findObjectPos(const std::string& name, const double& quant, const std::string& quantType) const
 {
 	for (unsigned int i = 0; i < objects.size(); i++)													// Loop for the size of vector objects
 	{
@@ -51,7 +51,7 @@ int DataItemList::findObjectPos(std::string name, double quant, std::string quan
 	return 0;			// Should not happen 
 }
 
-bool DataItemList::findIfObjectExists(std::shared_ptr<DataItem> object)
+bool DataItemList::findIfObjectExists(const std::shared_ptr<DataItem>& object) const
 {
 	for (unsigned int i = 0; i < objects.size(); i++)														// Loop for the size of vector objects
 	{
@@ -63,7 +63,7 @@ bool DataItemList::findIfObjectExists(std::shared_ptr<DataItem> object)
 	return false;
 }
 
-bool DataItemList::findIfObjectExists(std::string name, double quant, std::string quantType)
+bool DataItemList::findIfObjectExists(const std::string& name, const double& quant, const std::string& quantType) const
 {
 	for (unsigned int i = 0; i < objects.size(); i++)														// Loop for the size of vector objects
 	{
@@ -75,7 +75,8 @@ bool DataItemList::findIfObjectExists(std::string name, double quant, std::strin
 	return false;
 }
 
-void readCsv(DataItemList& itemList) {
+void readCsv(DataItemList& itemList) 
+{
 	std::ifstream infile("items.csv");
 	std::string line;
 	char delim;

@@ -21,9 +21,9 @@ protected:
 	ItemList() {};											/*!< default constructor*/
 public:
 	virtual ~ItemList() = default;										/*!< Virtual destructor*/
-	std::shared_ptr<DataItem> getObject(int i);				/*!< Virtual getObject method with no implementation*/
-	std::vector<std::shared_ptr<DataItem>> getContents();	/*!< Virtual getContents method with no implementation*/
-	virtual void addObject(std::shared_ptr<DataItem> newObject) = 0;	/*!< Virtual addObject method with no implementation*/
+	std::shared_ptr<DataItem> getObject(int i) const;				/*!< Virtual getObject method with no implementation*/
+	std::vector<std::shared_ptr<DataItem>> getContents() const;	/*!< Virtual getContents method with no implementation*/
+	virtual void addObject(const std::shared_ptr<DataItem>& newObject) = 0;	/*!< Virtual addObject method with no implementation*/
 	void deleteObject(int pos);								/*!< Virtual deleteObject method with no implementation*/
-	virtual std::string toString() = 0;									/*!< Virtual printAllObjects method with no implementation*/
+	virtual std::string toString() const = 0;									/*!< Virtual printAllObjects method with no implementation*/
 };

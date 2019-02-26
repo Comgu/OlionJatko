@@ -12,7 +12,7 @@ void RecipeList::addObject(std::shared_ptr<Recipe> newObject)
 		std::cout << "Recipe " << newObject->getName() << " already exists\n";
 }
 
-std::shared_ptr<Recipe> RecipeList::getObject(int i)
+std::shared_ptr<Recipe> RecipeList::getObject(int i) const
 {
 	return recipes[i];
 }
@@ -24,7 +24,7 @@ RecipeList& RecipeList::getInstance()
 	return instance;
 }
 
-std::string RecipeList::toString()
+std::string RecipeList::toString() const
 {
 	std::stringstream outputString;
 	for (unsigned int i = 0; i < recipes.size(); i++)
@@ -33,7 +33,8 @@ std::string RecipeList::toString()
 	return outputString.str();
 }
 
-std::string RecipeList::toStringNames() {
+std::string RecipeList::toStringNames() const 
+{
 	std::stringstream outputString;
 	outputString << "Recipes:\n";
 	for (unsigned int i = 0; i < recipes.size(); i++)
@@ -42,7 +43,8 @@ std::string RecipeList::toStringNames() {
 	return outputString.str();
 }
 
-int RecipeList::findObjectPos(std::shared_ptr<Recipe> recipe) {
+int RecipeList::findObjectPos(const std::shared_ptr<Recipe>& recipe) const 
+{
 	for (unsigned int i = 0; i < recipes.size(); i++) {													// Loop for the size of vector objects{
 		if (compareStrings(recipe->getName(), recipes[i]->getName()) == true)										// Compares by name using helper function compareStrings
 			return i;																			// Returns position
@@ -50,7 +52,8 @@ int RecipeList::findObjectPos(std::shared_ptr<Recipe> recipe) {
 	return 0;				// Should not happen 
 }
 
-int RecipeList::findObjectPos(std::string name) {
+int RecipeList::findObjectPos(const std::string& name) const 
+{
 	for (unsigned int i = 0; i < recipes.size(); i++) {													// Loop for the size of vector objects{
 		if (compareStrings(name, recipes[i]->getName()) == true)										// Compares by name using helper function compareStrings
 					return i;																			// Returns position
@@ -58,7 +61,8 @@ int RecipeList::findObjectPos(std::string name) {
 	return 0;				// Should not happen 
 }
 
-bool RecipeList::findIfObjectExists(std::shared_ptr<Recipe> recipe) {
+bool RecipeList::findIfObjectExists(const std::shared_ptr<Recipe>& recipe) const 
+{
 	for (unsigned int i = 0; i < recipes.size(); i++){														// Loop for the size of vector objects
 		if (compareStrings(recipe->getName(), recipes[i]->getName()) == true)								// Compares by name using helper function compareStrings
 					return true;
@@ -66,7 +70,8 @@ bool RecipeList::findIfObjectExists(std::shared_ptr<Recipe> recipe) {
 	return false;
 }
 
-bool RecipeList::findIfObjectExists(std::string name) {
+bool RecipeList::findIfObjectExists(const std::string& name) const 
+{
 	for (unsigned int i = 0; i < recipes.size(); i++) {														// Loop for the size of vector objects
 		if (compareStrings(name, recipes[i]->getName()) == true)								// Compares by name using helper function compareStrings
 			return true;
@@ -74,7 +79,8 @@ bool RecipeList::findIfObjectExists(std::string name) {
 	return false;
 }
 
-void readCsv(RecipeList& recipeList, DataItemList& itemList) {
+void readCsv(RecipeList& recipeList, DataItemList& itemList) 
+{
 	std::ifstream infile("recipes.csv");
 	std::string line;
 	std::string cName;

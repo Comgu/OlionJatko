@@ -19,7 +19,7 @@ public:
 	Recipe() {};									/*!< Default constructor with no param*/
 	Recipe(const std::string& newName);			/*!< Constructor with name*/
 	void setName(const std::string& newName);							/*!< Sets a new name for string name*/
-	std::string getName();												/*!< Gets string name from Recipe attributes*/		
-	void addObject(std::shared_ptr<DataItem> newObject) override;						/*!< Adds a DataItem object to vector*/
-	std::string toString() override;									/*!< Prints all objects in vector using function toString from DataItem class*/
+	std::string getName() const;												/*!< Gets string name from Recipe attributes*/		
+	void addObject(const std::shared_ptr<DataItem>& newObject) override;						/*!< Adds a DataItem object to vector*/
+	std::string toString() const override;									/*!< Prints all objects in vector using function toString from DataItem class*/
 };

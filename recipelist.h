@@ -10,15 +10,15 @@ private:
 	RecipeList() {}
 public:
 	void addObject(std::shared_ptr<Recipe> newObject);
-	std::shared_ptr<Recipe> getObject(int i);
+	std::shared_ptr<Recipe> getObject(int i) const;
 	static RecipeList& getInstance();
-	std::string toString();
-	std::string toStringNames();
+	std::string toString() const;
+	std::string toStringNames() const;
 	virtual ~RecipeList() = default;
-	int findObjectPos(std::shared_ptr<Recipe> recipe);
-	int findObjectPos(std::string name);
-	bool findIfObjectExists(std::shared_ptr<Recipe> recipe);
-	bool findIfObjectExists(std::string name);
+	int findObjectPos(const std::shared_ptr<Recipe>& recipe) const;
+	int findObjectPos(const std::string& name) const;
+	bool findIfObjectExists(const std::shared_ptr<Recipe>& recipe) const;
+	bool findIfObjectExists(const std::string& name) const;
 };
 
 void readCsv(RecipeList& recipeList, DataItemList& itemList);
