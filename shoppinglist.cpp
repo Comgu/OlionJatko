@@ -2,10 +2,7 @@
 #include <sstream>
 
 
-ShoppingList::ShoppingList(const std::string& newName)
-{
-	name = newName;
-}
+ShoppingList::ShoppingList(const std::string& newName) : name(newName) {}
 
 std::string ShoppingList::getName() const
 {

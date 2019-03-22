@@ -1,10 +1,7 @@
 #include "recipe.h"
 #include <sstream>
 
-Recipe::Recipe(const std::string& newName)
-{
-	name = newName;
-}
+Recipe::Recipe(const std::string& newName) : name(newName) {}
 
 std::string Recipe::getName() const
 {

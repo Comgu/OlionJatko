@@ -1,21 +1,9 @@
 #include "dataitem.h"
 #include <sstream>
 
-DataItem::DataItem(const std::string& newName)
-{
-	name = newName;
-}
+DataItem::DataItem(const std::string& newName) : name(newName) {}
 
-DataItem::DataItem(const std::string& newName, const double& newQuantity, const std::string& newQuantityType)
-{
-	name = newName;
-	quantityType = newQuantityType;
-	quantity = newQuantity;
-}
-
-DataItem::~DataItem()
-{
-}
+DataItem::DataItem(const std::string& newName, const double& newQuantity, const std::string& newQuantityType): name(newName), quantityType(newQuantityType), quantity(newQuantity) {}
 
 std::string DataItem::getName() const
 {
