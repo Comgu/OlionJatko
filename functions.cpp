@@ -1,4 +1,5 @@
 #include "functions.h"
+#include <algorithm>
 #include <iostream>
 #include <cctype>
 
@@ -14,8 +15,8 @@ bool compareStrings(const std::string& str1, const std::string& str2)
 		return false;
 }
 
-
-void processItemInput(std::string& str1, std::string& str2, double& num, std::istream& stream) {
+void processItemInput(std::string& str1, std::string& str2, double& num, std::istream& stream) 
+{
 	std::string tempString = "";
 	bool numberGone = false, endof = false;
 	while (stream.good() == true && endof == false) {							// Needs Error handling (after str2 specifically)
@@ -37,4 +38,11 @@ void processItemInput(std::string& str1, std::string& str2, double& num, std::is
 			endof = true;
 		}
 	}
+}
+
+bool checkBack(std::string str)
+{
+	if (str == "back" || str == "BACK" || str == "Back")
+		return true;
+	else return false;
 }
